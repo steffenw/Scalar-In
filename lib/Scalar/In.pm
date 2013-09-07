@@ -38,6 +38,8 @@ sub string_in ($+) { ## no critic (SubroutinePrototypes)
                 and return $true;
             next ITEM;
         }
+        ref $item eq 'CODE'
+            and return $item->($string);
         $string eq q{} . $item # stingify object
             and return $true;
     }
@@ -68,6 +70,8 @@ sub numeric_in ($+) { ## no critic (SubroutinePrototypes)
                 and return $true;
             next ITEM;
         }
+        ref $item eq 'CODE'
+            and return $item->($numeric);
         $numeric == ( 0 + $item ) # numify object
             and return $true;
     }
@@ -122,6 +126,16 @@ true if $string contains abc or def
 
     $boolean = string_in( $string, qr{ abc | def }xms );
 
+true if $string begins with abc
+
+    $boolean = string_in(
+        $string,
+        sub {
+            my $str = shift;
+            return 0 == index $str, 'abc';
+        },
+    );
+
 true if $object overloads C<""> and that is C<eq> 'string'.
 
     $boolean = string_in( $object, 'string' );
@@ -154,6 +168,16 @@ that here is operator C<==> used instead of operator C<eq>.
     $boolean = numeric_in( $numeric, @array );
     $boolean = numeric_in( $numeric, $hashref );
     $boolean = numeric_in( $numeric, %hash );
+
+true if $numeric > 1
+
+    $boolean = numeric_in(
+        $numeric,
+        sub {
+            my $num = shift;
+            return $num > 1;
+        },
+    );
 
 true if $object overloads C<+> and that is C<==> 123.
 

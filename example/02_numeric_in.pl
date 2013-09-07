@@ -20,6 +20,7 @@ my $object = bless {}, __PACKAGE__;
     0 + numeric_in( '00', qr{ \A [0] \z }xms ),
     0 + numeric_in( 0, 1 ),
     0 + numeric_in( '00', qr{ \A [0]{2} \z }xms ),
+    0 + numeric_in( 2, sub { shift > 1 } ),
     0 + numeric_in( $object, qr{ \A [0] \z }xms ),
     "\nArray reference: ",
     0 + numeric_in( undef, [ undef ] ),
@@ -53,7 +54,7 @@ __END__
 
 Output:
 
-Scalar: 100111001
+Scalar: 1001110011
 Array reference: 1001100
 Array: 100110
 Hash reference: 010

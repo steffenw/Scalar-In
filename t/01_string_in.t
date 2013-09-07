@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use overload q{""} => sub { 'A' };
 
-use Test::More tests => 31;
+use Test::More tests => 32;
 use Test::NoWarnings;
 
 BEGIN {
@@ -35,6 +35,9 @@ ok
 ok
     ! string_in( 'A', qr{ \A [A]{2} \z }xms ),
     'string regex false';
+ok
+    string_in( 'ABCDEFG', sub { 0 == index shift, 'ABC' } ),
+    'string code true';
 ok
     string_in( $object, 'A' ),
     'object left true';

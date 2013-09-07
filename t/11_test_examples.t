@@ -20,7 +20,7 @@ my @data = (
         script => '01_string_in.pl',
         params => '-I../lib -T',
         result => <<'EOT',
-Scalar: 100110011
+Scalar: 1001100111
 Array reference: 1001100
 Array: 1001100
 Hash reference: 010
@@ -33,7 +33,7 @@ EOT
         script => '02_numeric_in.pl',
         params => '-I../lib -T',
         result => <<'EOT',
-Scalar: 100111001
+Scalar: 1001110011
 Array reference: 1001100
 Array: 100110
 Hash reference: 010

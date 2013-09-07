@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use overload q{+} => sub { 0 };
 
-use Test::More tests => 32;
+use Test::More tests => 33;
 use Test::NoWarnings;
 
 BEGIN {
@@ -38,6 +38,9 @@ ok
 ok
     ! numeric_in( '00', qr{ \A [0]{2} \z }xms ),
     'string regex false';
+ok
+    numeric_in( 2, sub { shift > 1 } ),
+    'string code true';
 ok
     numeric_in( $object, 0 ),
     'object left true';

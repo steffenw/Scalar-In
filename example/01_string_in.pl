@@ -19,6 +19,7 @@ my $object = bless {}, __PACKAGE__;
     0 + string_in( 'A', qr{ \A [A] \z }xms ),
     0 + string_in( 'A', 'AA' ),
     0 + string_in( 'A', qr{ \A [A]{2} \z }xms ),
+    0 + string_in( 'ABCDEFG', sub { 0 == index shift, 'ABC' } ),
     0 + string_in( $object, 'A' ),
     0 + string_in( 'A', $object ),
     "\nArray reference: ",
@@ -53,7 +54,7 @@ __END__
 
 Output:
 
-Scalar: 100110011
+Scalar: 1001100111
 Array reference: 1001100
 Array: 1001100
 Hash reference: 010
