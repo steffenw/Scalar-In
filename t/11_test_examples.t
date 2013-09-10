@@ -21,7 +21,7 @@ my @data = (
         params => '-I../lib -T',
         result => <<'EOT',
 Scalar: 1001100111
-Array reference: 1001100
+Array reference: 10011001
 Array: 1001100
 Hash reference: 010
 Hash: 010
@@ -34,7 +34,7 @@ EOT
         params => '-I../lib -T',
         result => <<'EOT',
 Scalar: 1001110011
-Array reference: 1001100
+Array reference: 10011001
 Array: 100110
 Hash reference: 010
 Hash: 010
