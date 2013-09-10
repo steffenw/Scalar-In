@@ -2,9 +2,9 @@
 
 use strict;
 use warnings;
-use overload q{+} => sub { return 0 };
+use overload q{+} => sub { 0 };
 
-use Scalar::In;
+use Scalar::In qw( numeric_in );
 
 our $VERSION = '0.001';
 
@@ -39,7 +39,7 @@ my $object = bless {}, __PACKAGE__;
     0 + numeric_in( 1, @{[ 0, 2 ]} ),
     numeric_in( 1, @{[ qr{ \A [02] \z }xms ]} ),
     "\nHash reference: ",
-    0 + string_in( undef, { 0 => undef } ),
+    0 + numeric_in( undef, { 0 => undef } ),
     0 + numeric_in( 0, { 0 => undef } ),
     0 + numeric_in( 0, { 1 => undef } ),
     "\nHash: ",

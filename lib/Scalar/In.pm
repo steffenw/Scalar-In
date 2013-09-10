@@ -5,7 +5,7 @@ use warnings;
 use Sub::Exporter -setup => {
     exports => [ qw( string_in numeric_in ) ],
     groups  => {
-        default => [ qw( string_in numeric_in ) ],
+        default => [ qw( string_in ) ],
     },
 };
 
@@ -95,8 +95,10 @@ Scalar::In - replacement for smartmatch
 
 =head1 SYNOPSIS
 
-    use Scalar::In;
-    use Scalar::In qw( string_in numeric_in );
+    use Scalar::In;                                   # imports string_in
+    use Scalar::In 'numeric_in';                      # imports numeric_in
+    use Scalar::In string_in  => { -as => 'in' };     # imports in
+    use Scalar::In numeric_in => { -as => 'num_in' }; # imports num_in
 
 =head1 EXAMPLE
 
@@ -105,8 +107,18 @@ Run this *.pl files.
 
 =head1 DESCRIPTION
 
-This module was written because the smartmatch operator ~~
+This module was written because the smartmatch operator C<~~>
 was deprecated as experimental.
+
+That module implements some "in" subroutines
+with smartmatch similar behaviour.
+
+First I tried to delete the obsolete looking C<numeric_in>.
+In tests I realized
+that objects with overloaded C<+> working there
+but C<string_in> expects objects with overloaded C<"">.
+So there are some special cases for C<numeric_in>.
+Because of such minimal cases C<numeric_in> is not exported as default.
 
 =head1 SUBROUTINES/METHODS
 

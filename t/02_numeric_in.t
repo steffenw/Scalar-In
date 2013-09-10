@@ -8,7 +8,7 @@ use Test::More tests => 33;
 use Test::NoWarnings;
 
 BEGIN {
-    use_ok('Scalar::In');
+    use_ok('Scalar::In', 'numeric_in' );
 }
 
 my $object = bless {}, __PACKAGE__;

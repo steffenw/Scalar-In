@@ -11,7 +11,7 @@ $ENV{AUTHOR_TESTING} or plan(
     skip_all => 'Set $ENV{AUTHOR_TESTING} to run this test.'
 );
 
-plan( tests => 2 );
+plan( tests => 3 );
 
 my @data = (
     {
@@ -38,6 +38,16 @@ Array reference: 1001100
 Array: 100110
 Hash reference: 010
 Hash: 010
+EOT
+    },
+    {
+        test   => '03_renamed_import',
+        path   => 'example',
+        script => '03_renamed_import.pl',
+        params => '-I../lib -T',
+        result => <<'EOT',
+eq: 1
+==: 1
 EOT
     },
 );
