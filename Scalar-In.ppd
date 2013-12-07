@@ -1,8 +1,8 @@
-<SOFTPKG NAME="Scalar-In" VERSION="0.001">
+<SOFTPKG NAME="Scalar-In" VERSION="0.002">
     <ABSTRACT>Scalar::In - replacement for smartmatch</ABSTRACT>
     <AUTHOR>Steffen Winkler &lt;steffenw at cpan.org&gt;</AUTHOR>
     <IMPLEMENTATION>
-        <REQUIRE NAME="version::" VERSION="0" />
-        <CODEBASE HREF="PPM-Scalar-In-0.001.tar.gz" />
+        <REQUIRE NAME="Sub::Exporter" VERSION="0" />
+        <CODEBASE HREF="PPM-Scalar-In-0.002.tar.gz" />
     </IMPLEMENTATION>
 </SOFTPKG>

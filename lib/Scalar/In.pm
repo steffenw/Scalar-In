@@ -9,7 +9,7 @@ use Sub::Exporter -setup => {
     },
 };
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 # using dualvars
 my $true  = ! 0;
@@ -27,7 +27,7 @@ sub string_in (++) { ## no critic (SubroutinePrototypes)
         : $any1;
     for my $string ( @any1 ) {
         if ( defined $string ) {
-            $string = q{}. $string; # stingify object
+            $string .= q{}; # stingify object
         }
         my $ref_any2 = ref $any2;
         my @any2
@@ -109,7 +109,7 @@ Scalar::In - replacement for smartmatch
 
 =head1 VERSION
 
-0.001
+0.002
 
 =head1 SYNOPSIS
 

@@ -10,12 +10,14 @@ Module::Build->new(
     dist_author       => 'Steffen Winkler <steffenw at cpan.org>',
     dist_version_from => 'lib/Scalar/In.pm',
     requires          => {
-        perl    => '5.006',
-        version => 0,
+        perl            => '5.014',
+        'Sub::Exporter' => 0,
     },
     build_requires => {
-        'Test::NoWarnings'  => 0,
+        Cwd                 => 0, # perl dist
+        'Test::Differences' => '0.60',
         'Test::More'        => 0, # dist Test-Simple
+        'Test::NoWarnings'  => 0,
     },
     recommends => {
         'Test::Pod'            => '1.14',
